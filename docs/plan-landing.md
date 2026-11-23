@@ -60,14 +60,14 @@ hace falta texto turquesa en claro usa `#00806F` (4.9). En secciones oscuras el 
 Proporción: 75 % blanco/hielo · 15 % tinta · 8 % azul · 2 % turquesa.
 
 Detalle opcional para el hero: degradado muy sutil azul → turquesa (`#2453FF → #00C2A8`) solo en
-una línea, un trazo del diagrama o el subrayado de la palabra en itálica; nunca como fondo completo.
+una línea, un trazo del diagrama o el subrayado de la palabra de énfasis; nunca como fondo completo.
 
 ## 2.2 Tipografía (Google Fonts, gratis)
 
 | Rol | Fuente | Uso |
 |---|---|---|
 | Display / titulares | **Bricolage Grotesque** (600–800) | H1–H3 |
-| Énfasis editorial | **Instrument Serif** *itálica* | 1–2 palabras clave ("tu equipo, *con IA*") |
+| Énfasis | **Bricolage Grotesque** (mismo peso del titular) en **azul Gestalia** `#2453FF` | 1–2 palabras clave dentro del titular ("Le enseñamos a hacerlo **con IA**"); en fondo oscuro, azul claro `#6E8BFF` |
 | Texto | **Inter** (400–600) | Párrafos, botones, formularios |
 | Datos / etiquetas | **JetBrains Mono** (500) | Métricas, etiquetas ("02 — Sesiones 1:1") |
 
@@ -97,7 +97,7 @@ Logo · Programa · Cómo funciona · Para quién · Casos · Agentes de IA · F
 ### 3.2 Hero
 - **Etiqueta:** `ADOPCIÓN DE IA PARA PYMES · MÉXICO`
 - **Guiño de marca (opcional, bajo el logo o en "Sobre nosotros"):** "Gestalt + IA: el todo es más que la suma de sus partes."
-- **H1:** "Tu equipo ya sabe hacer su trabajo. Le enseñamos a hacerlo *con IA*."
+- **H1:** "Tu equipo ya sabe hacer su trabajo. Le enseñamos a hacerlo **con IA**." (*"con IA" en azul Gestalia*)
 - **Subtítulo:** "Modernizamos el back office de tu empresa y capacitamos a cada persona, en sesiones uno a uno, para que automatice sus propias tareas con Claude, Gemini o ChatGPT."
 - **CTA primario:** "Agenda una llamada de 30 min" · **secundario:** "Escríbenos por WhatsApp".
 - **Visual:** línea de tiempo animada del día de un colaborador (sección 2.4).
