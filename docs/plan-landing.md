@@ -39,22 +39,28 @@ claro cómo incorporarla a los procesos* (SAP, 2025). Ese es exactamente el prob
 
 ## 2.1 Colorimetría
 
-Cálida, mexicana y sobria; se aleja del morado/neón de "AI genérica" y transmite cercanía humana.
+Tech limpio y claro: blanco, negro azulado y un azul eléctrico como color de marca. Moderno,
+muy legible y con energía de tecnología, sin caer en el morado/neón de "AI genérica".
 
 <div class="swatches">
-<div class="sw" style="background:#101826;color:#F7F4EE"><b>Tinta</b><br>#101826<br><small>Texto, fondos oscuros</small></div>
-<div class="sw" style="background:#F7F4EE;color:#101826;border:1px solid #ddd"><b>Papel</b><br>#F7F4EE<br><small>Fondo principal</small></div>
-<div class="sw" style="background:#0B6E5B;color:#fff"><b>Jade</b><br>#0B6E5B<br><small>Primario, enlaces</small></div>
-<div class="sw" style="background:#3FB59A;color:#101826"><b>Jade claro</b><br>#3FB59A<br><small>Primario en modo oscuro</small></div>
-<div class="sw" style="background:#B3431E;color:#fff"><b>Barro</b><br>#B3431E<br><small>CTA principal</small></div>
-<div class="sw" style="background:#E9B949;color:#101826"><b>Maíz</b><br>#E9B949<br><small>Acento, highlights</small></div>
-<div class="sw" style="background:#5B6472;color:#fff"><b>Pizarra</b><br>#5B6472<br><small>Texto secundario</small></div>
-<div class="sw" style="background:#E6E1D6;color:#101826"><b>Arena</b><br>#E6E1D6<br><small>Bordes, tarjetas</small></div>
+<div class="sw" style="background:#FFFFFF;color:#0A0F1C;border:1px solid #E3E7EE"><b>Blanco</b><br>#FFFFFF<br><small>Fondo principal</small></div>
+<div class="sw" style="background:#F2F4F8;color:#0A0F1C"><b>Hielo</b><br>#F2F4F8<br><small>Secciones alternas, tarjetas</small></div>
+<div class="sw" style="background:#0A0F1C;color:#FFFFFF"><b>Tinta</b><br>#0A0F1C<br><small>Texto, secciones oscuras</small></div>
+<div class="sw" style="background:#2453FF;color:#FFFFFF"><b>Azul Gestalia</b><br>#2453FF<br><small>Marca, CTA, enlaces, "ia"</small></div>
+<div class="sw" style="background:#6E8BFF;color:#0A0F1C"><b>Azul claro</b><br>#6E8BFF<br><small>Primario sobre fondo oscuro</small></div>
+<div class="sw" style="background:#00C2A8;color:#0A0F1C"><b>Turquesa</b><br>#00C2A8<br><small>Acento: íconos, highlights, datos</small></div>
+<div class="sw" style="background:#5A6478;color:#FFFFFF"><b>Pizarra</b><br>#5A6478<br><small>Texto secundario</small></div>
+<div class="sw" style="background:#E3E7EE;color:#0A0F1C"><b>Línea</b><br>#E3E7EE<br><small>Bordes, divisores</small></div>
 </div>
 
-**Contraste verificado (WCAG):** Tinta/Papel 16.2 · Jade/Papel 5.6 (AA) · Blanco/Barro 5.6 (AA) ·
-Jade claro/Tinta 7.0 (AAA) · Maíz/Tinta 9.7. Regla: **maíz nunca como texto sobre papel**; en
-secciones oscuras se usa jade claro. Proporción: 70 % papel/arena · 20 % tinta · 7 % jade · 3 % barro/maíz.
+**Contraste verificado (WCAG):** Tinta/Blanco 19.1 · Azul/Blanco 5.6 (AA, texto blanco en botones OK) ·
+Azul/Hielo 5.1 (AA) · Pizarra/Blanco 6.0 · Azul claro/Tinta 6.2 · Turquesa/Tinta 8.5.
+Reglas: **turquesa nunca como texto sobre blanco** (2.3); úsalo como fondo, ícono o subrayado, y si
+hace falta texto turquesa en claro usa `#00806F` (4.9). En secciones oscuras el azul pasa a azul claro.
+Proporción: 75 % blanco/hielo · 15 % tinta · 8 % azul · 2 % turquesa.
+
+Detalle opcional para el hero: degradado muy sutil azul → turquesa (`#2453FF → #00C2A8`) solo en
+una línea, un trazo del diagrama o el subrayado de la palabra en itálica; nunca como fondo completo.
 
 ## 2.2 Tipografía (Google Fonts, gratis)
 
@@ -69,7 +75,7 @@ Escala fluida: H1 44→72 px · H2 32→48 · H3 22→28 · cuerpo 17–18. Inte
 
 ## 2.3 Logo
 
-- Wordmark **gestal**<span style="color:#0B6E5B">**ia**</span> en minúsculas (Bricolage 700): "gestal" en tinta y **"ia" en jade** para que se lea la IA dentro del nombre. Variante: el punto de la *i* como nodo maíz.
+- Wordmark **gestal**<span style="color:#2453FF">**ia**</span> en minúsculas (Bricolage 700): "gestal" en tinta y **"ia" en azul Gestalia** para que se lea la IA dentro del nombre. Variante: el punto de la *i* como nodo turquesa.
 - Uso en copy: escribir siempre "Gestalia" (sin mayúsculas raras como "GestalIA") y dejar que el color haga el trabajo en el logo y en el hero.
 - Dominio y redes: gestalia.mx; handle @gestalia.mx o @gestaliamx.
 - Isotipo: **cuatro piezas que forman un cuadrado** (personas + herramientas → un todo). Favicon y avatar de WhatsApp/LinkedIn.
@@ -80,13 +86,13 @@ Escala fluida: H1 44→72 px · H2 32→48 · H3 22→28 · cuerpo 17–18. Inte
 - **Antes → después del back office:** a la izquierda Excel por correo, carpetas, papel; a la derecha un stack limpio (suite en la nube + asistente de IA). Ilustración SVG propia, línea fina 1.5 px.
 - **Fotografía real** de sesiones 1:1 y talleres (es el diferenciador: presencia humana). Nada de robots ni cerebros 3D ni bancos de imágenes.
 - **Logos de plataformas** (Claude, Gemini, ChatGPT) solo en una franja "Trabajamos con", respetando las guías de marca de cada proveedor.
-- **UI:** tarjetas con radio 14 px, botones redondos, bordes arena de 1 px, grano sutil sobre papel.
+- **UI:** tarjetas con radio 14 px, botones redondos, bordes de 1 px color línea, fondo de cuadrícula de puntos muy tenue en el hero.
 - **Animación:** sobria (fade + 12 px, 300 ms); el "momento wow" es la línea de tiempo del hero transformándose. Respetar `prefers-reduced-motion`. Modo oscuro vía tokens.
 
 # 3. Contenido de la landing (estructura y copy borrador)
 
 ### 3.1 Navegación
-Logo · Programa · Cómo funciona · Para quién · Casos · Agentes de IA · FAQ · **[Agenda una llamada]** (barro) · WhatsApp.
+Logo · Programa · Cómo funciona · Para quién · Casos · Agentes de IA · FAQ · **[Agenda una llamada]** (botón azul) · WhatsApp.
 
 ### 3.2 Hero
 - **Etiqueta:** `ADOPCIÓN DE IA PARA PYMES · MÉXICO`
