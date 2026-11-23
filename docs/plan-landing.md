@@ -5,7 +5,9 @@ subtitle: "Posicionamiento, identidad visual y contenido · v2 · noviembre 2026
 
 # 0. Concepto y posicionamiento
 
-**Gestalia** = *Gestalt* ("el todo es más que la suma de sus partes") + *gestión*.
+**Gestal*ia*** = *Gestalt* ("el todo es más que la suma de sus partes") + **IA**, con eco de *gestión*.
+El nombre ya contiene la oferta: la terminación **-ia** es la inteligencia artificial que une las piezas
+de la empresa en un todo.
 Una empresa no se moderniza comprando una herramienta: se moderniza cuando **cada persona**
 cambia su forma de trabajar. Gestalia acompaña a las PyMEs a dar ese salto, persona por persona.
 
@@ -67,7 +69,9 @@ Escala fluida: H1 44→72 px · H2 32→48 · H3 22→28 · cuerpo 17–18. Inte
 
 ## 2.3 Logo
 
-- Wordmark **gestalia** en minúsculas (Bricolage 700); el punto de la *i* es un nodo jade.
+- Wordmark **gestal**<span style="color:#0B6E5B">**ia**</span> en minúsculas (Bricolage 700): "gestal" en tinta y **"ia" en jade** para que se lea la IA dentro del nombre. Variante: el punto de la *i* como nodo maíz.
+- Uso en copy: escribir siempre "Gestalia" (sin mayúsculas raras como "GestalIA") y dejar que el color haga el trabajo en el logo y en el hero.
+- Dominio y redes: gestalia.mx; handle @gestalia.mx o @gestaliamx.
 - Isotipo: **cuatro piezas que forman un cuadrado** (personas + herramientas → un todo). Favicon y avatar de WhatsApp/LinkedIn.
 
 ## 2.4 Lenguaje visual
@@ -86,6 +90,7 @@ Logo · Programa · Cómo funciona · Para quién · Casos · Agentes de IA · F
 
 ### 3.2 Hero
 - **Etiqueta:** `ADOPCIÓN DE IA PARA PYMES · MÉXICO`
+- **Guiño de marca (opcional, bajo el logo o en "Sobre nosotros"):** "Gestalt + IA: el todo es más que la suma de sus partes."
 - **H1:** "Tu equipo ya sabe hacer su trabajo. Le enseñamos a hacerlo *con IA*."
 - **Subtítulo:** "Modernizamos el back office de tu empresa y capacitamos a cada persona, en sesiones uno a uno, para que automatice sus propias tareas con Claude, Gemini o ChatGPT."
 - **CTA primario:** "Agenda una llamada de 30 min" · **secundario:** "Escríbenos por WhatsApp".
