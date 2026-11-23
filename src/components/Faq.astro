@@ -1,0 +1,31 @@
+---
+import { faq } from '../data/faq';
+---
+
+<section id="faq" class="scroll-mt-16 border-t border-linea bg-hielo py-20 md:py-28">
+  <div class="container-g grid gap-10 lg:grid-cols-[1fr_1.6fr]">
+    <div class="reveal">
+      <p class="etiqueta">08 — Preguntas frecuentes</p>
+      <h2 class="mt-4 text-[clamp(2rem,4.5vw,3rem)]">Lo que <span class="enfasis">siempre nos preguntan</span>.</h2>
+    </div>
+    <div class="reveal divide-y divide-linea rounded-[var(--radius-card)] border border-linea bg-blanco">
+      {faq.map((f) => (
+        <details class="group px-5 sm:px-6">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 font-display text-lg font-bold [&::-webkit-details-marker]:hidden">
+            {f.q}
+            <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-linea text-azul transition-transform group-open:rotate-45" aria-hidden="true">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 1v10M1 6h10" /></svg>
+            </span>
+          </summary>
+          <p class="pb-5 text-pizarra">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+})} />

@@ -1,0 +1,66 @@
+---
+// TODO: llenar con datos reales y permiso del cliente. `valor: null` se muestra como "por confirmar".
+const casoPrograma = {
+  etiqueta: 'Programa de adopción de Claude',
+  empresa: 'PyME de servicios · Guadalajara',
+  antes: 'Equipo administrativo que nunca había usado IA; reportes y capturas manuales en Excel y correo.',
+  hicimos: 'Claude Team para todo el equipo, curso grupal y sesiones 1:1 con cada colaborador para crear sus skills.',
+  metricas: [
+    { valor: null, label: 'personas capacitadas' },
+    { valor: null, label: 'skills creadas' },
+    { valor: null, label: 'horas/semana ahorradas' },
+  ],
+  cita: null as string | null,
+};
+---
+
+<section id="casos" class="scroll-mt-16 border-y border-linea bg-hielo py-20 md:py-28">
+  <div class="container-g">
+    <div class="reveal max-w-2xl">
+      <p class="etiqueta">05 — Casos</p>
+      <h2 class="mt-4 text-[clamp(2rem,4.5vw,3rem)]">Resultados medidos <span class="enfasis">en horas, no en promesas</span>.</h2>
+    </div>
+
+    <div class="mt-12 grid gap-4 lg:grid-cols-[1.4fr_1fr]">
+      <article class="reveal card flex flex-col p-6 sm:p-8">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="rounded-full bg-azul px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-blanco">{casoPrograma.etiqueta}</span>
+          <span class="font-mono text-xs text-pizarra">{casoPrograma.empresa}</span>
+        </div>
+        <dl class="mt-6 grid gap-5 sm:grid-cols-2">
+          <div>
+            <dt class="etiqueta">Antes</dt>
+            <dd class="mt-2 text-pizarra">{casoPrograma.antes}</dd>
+          </div>
+          <div>
+            <dt class="etiqueta">Qué hicimos</dt>
+            <dd class="mt-2 text-pizarra">{casoPrograma.hicimos}</dd>
+          </div>
+        </dl>
+        <ul class="mt-8 grid grid-cols-3 gap-3 border-t border-linea pt-6">
+          {casoPrograma.metricas.map((m) => (
+            <li>
+              {m.valor !== null
+                ? <p class="font-display text-3xl font-bold sm:text-4xl">{m.valor}</p>
+                : <p class="font-mono text-xs text-pizarra">por confirmar</p>}
+              <p class="mt-1 text-sm text-pizarra">{m.label}</p>
+            </li>
+          ))}
+        </ul>
+        {casoPrograma.cita && <blockquote class="mt-6 border-l-2 border-azul pl-4 italic">{casoPrograma.cita}</blockquote>}
+      </article>
+
+      <article class="reveal card flex flex-col bg-tinta p-6 text-blanco sm:p-8">
+        <span class="w-fit rounded-full border border-blanco/20 px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-azul-claro">Hecho en casa</span>
+        <h3 class="mt-5 text-2xl">coberto.ai</h3>
+        <p class="mt-3 text-blanco/75">
+          Software con IA que construimos y operamos para nuestra propia promotoría de seguros de auto en Guadalajara:
+          cotización, seguimiento de pólizas y renovaciones.
+        </p>
+        <p class="mt-auto pt-6 text-sm font-medium text-blanco">
+          Enseñamos lo que usamos todos los días en nuestro propio negocio.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>

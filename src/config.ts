@@ -1,4 +1,4 @@
-// Datos de contacto. TODO: reemplazar los placeholders antes de publicar.
+// Datos del sitio. TODO: reemplazar los placeholders antes de publicar.
 export const site = {
   name: 'Gestalia',
   url: 'https://gestalia.mx',
@@ -8,9 +8,25 @@ export const site = {
   // Número en formato internacional sin "+" ni espacios, ej. 5213312345678
   whatsapp: '520000000000',
   whatsappMessage: 'Hola, me interesa el programa de adopción de IA de Gestalia.',
-  // Liga de agenda (Cal.com / Google Calendar)
+  // Liga de agenda (Cal.com / Google Calendar). Mientras no exista, lleva al formulario.
   bookingUrl: '#contacto',
   email: 'hola@gestalia.mx',
+  linkedin: '#',
+  // Endpoint que recibe el formulario por POST (JSON). Compatible con Formspree, Web3Forms,
+  // un webhook propio o una función serverless. Vacío = el formulario abre el correo del visitante.
+  formEndpoint: '',
+};
+
+export const fundador = {
+  nombre: 'Oscar Rivera',
+  iniciales: 'OR',
+  rol: 'Fundador',
+  // TODO: agregar foto en public/img/fundador.jpg y poner la ruta aquí
+  foto: '',
+  bio: [
+    'Desarrollador de software y consultor de flujos de trabajo con IA en Guadalajara.',
+    'Ha capacitado a equipos que nunca habían usado IA para que hoy automaticen su propio trabajo, y construye software con IA para su propio negocio de seguros.',
+  ],
 };
 
 export const whatsappUrl = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappMessage)}`;

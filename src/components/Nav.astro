@@ -3,17 +3,19 @@ import Logo from './Logo.astro';
 import { site, whatsappUrl } from '../config';
 
 const links = [
-  { href: '#problema', label: 'El problema' },
   { href: '#programa', label: 'Programa' },
-  { href: '#contacto', label: 'Contacto' },
+  { href: '#para-quien', label: 'Para quién' },
+  { href: '#casos', label: 'Casos' },
+  { href: '#agentes', label: 'Agentes de IA' },
+  { href: '#faq', label: 'FAQ' },
 ];
 ---
 
 <header class="sticky top-0 z-40 border-b border-linea/70 bg-blanco/85 backdrop-blur">
   <nav class="container-g flex h-16 items-center justify-between gap-4" aria-label="Principal">
     <a href="/" aria-label="Gestalia, inicio"><Logo /></a>
-    <ul class="hidden items-center gap-8 text-sm font-medium text-pizarra md:flex">
-      {links.map((l) => <li><a href={l.href} class="hover:text-tinta">{l.label}</a></li>)}
+    <ul class="hidden items-center gap-6 text-sm lg:gap-8 font-medium text-pizarra lg:flex">
+      {links.map((l) => <li><a href={`/${l.href}`} class="hover:text-tinta">{l.label}</a></li>)}
     </ul>
     <div class="flex items-center gap-2">
       <a

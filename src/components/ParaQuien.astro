@@ -1,0 +1,102 @@
+---
+const industrias = [
+  {
+    id: 'seguros',
+    nombre: 'Seguros',
+    tareas: ['Comparar cotizaciones de varias aseguradoras en una tabla', 'Revisar pólizas y resumir coberturas para el cliente', 'Preparar avisos de renovación personalizados'],
+  },
+  {
+    id: 'contables',
+    nombre: 'Despachos contables',
+    tareas: ['Leer CFDI y estados de cuenta para conciliar', 'Redactar el reporte mensual para cada cliente', 'Responder dudas fiscales frecuentes con tus criterios'],
+  },
+  {
+    id: 'legales',
+    nombre: 'Despachos legales',
+    tareas: ['Primer borrador de contratos con tus plantillas', 'Resumir expedientes y detectar fechas clave', 'Comparar versiones de un documento'],
+  },
+  {
+    id: 'comercio',
+    nombre: 'Comercio y distribución',
+    tareas: ['Convertir pedidos de correo o WhatsApp en órdenes', 'Analizar ventas por producto y cliente', 'Redactar fichas de producto y listas de precios'],
+  },
+  {
+    id: 'inmobiliarias',
+    nombre: 'Inmobiliarias y constructoras',
+    tareas: ['Fichas de inmuebles y anuncios en minutos', 'Seguimiento de prospectos y minutas de visita', 'Presupuestos y control de avance a partir de Excel'],
+  },
+  {
+    id: 'salud',
+    nombre: 'Salud y consultorios',
+    tareas: ['Plantillas de indicaciones y consentimientos', 'Organizar agenda, recordatorios y cobranza', 'Resumir reportes administrativos del mes'],
+  },
+];
+---
+
+<section id="para-quien" class="scroll-mt-16 py-20 md:py-28">
+  <div class="container-g">
+    <div class="reveal grid gap-6 lg:grid-cols-2 lg:items-end">
+      <div>
+        <p class="etiqueta">03 — Para quién</p>
+        <h2 class="mt-4 text-[clamp(2rem,4.5vw,3rem)]">PyMEs con mucho trabajo de oficina <span class="enfasis">y poco tiempo para aprender</span>.</h2>
+      </div>
+      <p class="text-lg text-pizarra">
+        Equipos de 5 a 100 personas en administración, contabilidad, ventas y operaciones. Estos son algunos ejemplos de tareas que tus colaboradores pueden convertir en skills:
+      </p>
+    </div>
+
+    <div class="reveal mt-12" data-tabs>
+      <div role="tablist" aria-label="Industrias" class="-mx-4 flex gap-2 overflow-x-auto px-4 pb-2 sm:mx-0 sm:flex-wrap sm:px-0">
+        {industrias.map((ind, i) => (
+          <button
+            role="tab"
+            id={`tab-${ind.id}`}
+            aria-controls={`panel-${ind.id}`}
+            aria-selected={i === 0 ? 'true' : 'false'}
+            tabindex={i === 0 ? 0 : -1}
+            class="shrink-0 rounded-full border border-linea px-4 py-2 text-sm font-medium text-pizarra transition-colors hover:border-tinta aria-selected:border-tinta aria-selected:bg-tinta aria-selected:text-blanco"
+          >
+            {ind.nombre}
+          </button>
+        ))}
+      </div>
+      {industrias.map((ind, i) => (
+        <div role="tabpanel" id={`panel-${ind.id}`} aria-labelledby={`tab-${ind.id}`} hidden={i !== 0} class="mt-6">
+          <ul class="grid gap-4 md:grid-cols-3">
+            {ind.tareas.map((t, j) => (
+              <li class="card flex gap-4 p-5">
+                <span class="font-mono text-sm text-azul">0{j + 1}</span>
+                <span class="font-medium">{t}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-tabs]').forEach((root) => {
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const select = (tab: HTMLButtonElement) => {
+      tabs.forEach((t) => {
+        const on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        const panel = document.getElementById(t.getAttribute('aria-controls')!);
+        if (panel) panel.hidden = !on;
+      });
+    };
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => select(tab));
+      tab.addEventListener('keydown', (e) => {
+        const dir = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (!dir) return;
+        const next = tabs[(i + dir + tabs.length) % tabs.length];
+        select(next);
+        next.focus();
+      });
+    });
+  });
+</script>

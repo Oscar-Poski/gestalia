@@ -1,0 +1,40 @@
+---
+import { whatsappUrl } from '../config';
+
+const sdks = ['Claude Agent SDK', 'OpenAI Agents SDK', 'Google ADK'];
+const ofertas = [
+  {
+    titulo: 'Agentes a la medida',
+    texto: 'Cuando un proceso merece su propia solución: un agente que lee, decide y actúa con tus sistemas y tus reglas.',
+  },
+  {
+    titulo: 'Taller de agentes para desarrolladores',
+    texto: 'Tu equipo técnico aprende a construir agentes con los SDK oficiales, de cero a producción.',
+  },
+];
+---
+
+<section id="agentes" class="scroll-mt-16 bg-tinta py-20 text-blanco md:py-28">
+  <div class="container-g grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center">
+    <div class="reveal">
+      <p class="etiqueta !text-blanco/60">06 — Para ir más lejos</p>
+      <h2 class="mt-4 text-[clamp(2rem,4.5vw,3rem)]">Agentes de IA <span class="text-azul-claro">a la medida</span>.</h2>
+      <p class="mt-5 text-lg text-blanco/75">
+        Para empresas con un proceso que ya no cabe en un chat, o con equipo técnico que quiere construir sus propios agentes.
+      </p>
+      <ul class="mt-8 flex flex-wrap gap-2" aria-label="SDK con los que trabajamos">
+        {sdks.map((s) => <li class="rounded-full border border-blanco/20 px-3 py-1.5 font-mono text-xs text-blanco/80">{s}</li>)}
+      </ul>
+      <a href={whatsappUrl} target="_blank" rel="noopener" class="btn-primario mt-8">Cuéntanos tu caso</a>
+    </div>
+    <ul class="grid gap-4">
+      {ofertas.map((o, i) => (
+        <li class="reveal rounded-[var(--radius-card)] border border-blanco/10 bg-blanco/[0.04] p-6" style={`transition-delay:${i * 60}ms`}>
+          <span class="font-mono text-sm text-azul-claro">0{i + 1}</span>
+          <h3 class="mt-3 text-xl">{o.titulo}</h3>
+          <p class="mt-2 text-blanco/70">{o.texto}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

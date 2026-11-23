@@ -5,7 +5,7 @@ import { site, whatsappUrl } from '../config';
 <section id="contacto" class="scroll-mt-16 bg-tinta py-20 text-blanco md:py-28">
   <div class="container-g grid gap-12 lg:grid-cols-2 lg:items-center">
     <div class="reveal">
-      <p class="etiqueta !text-blanco/60">03 — Hablemos</p>
+      <p class="etiqueta !text-blanco/60">09 — Hablemos</p>
       <h2 class="mt-4 text-[clamp(2rem,4.5vw,3rem)]">
         En 30 minutos te decimos qué tareas de tu equipo puede resolver la IA <span class="text-azul-claro">esta misma semana</span>.
       </h2>
@@ -15,8 +15,10 @@ import { site, whatsappUrl } from '../config';
       </div>
     </div>
 
-    <!-- v0.1: el formulario abre el correo del usuario. v0.2: conectar a backend/CRM. -->
-    <form id="form-contacto" class="reveal grid gap-4 rounded-[var(--radius-card)] bg-blanco p-6 text-tinta sm:p-8" data-email={site.email}>
+    <!-- Si site.formEndpoint está vacío, el formulario abre el correo del visitante. -->
+    <form id="form-contacto" class="reveal grid gap-4 rounded-[var(--radius-card)] bg-blanco p-6 text-tinta sm:p-8" data-email={site.email} data-endpoint={site.formEndpoint}>
+      <!-- Honeypot anti-spam: invisible para personas -->
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
       <div class="grid gap-4 sm:grid-cols-2">
         <label class="grid gap-1.5 text-sm font-medium">Nombre
           <input name="nombre" required autocomplete="name" class="rounded-lg border border-linea px-3 py-2.5 font-normal" />
@@ -36,19 +38,54 @@ import { site, whatsappUrl } from '../config';
       <label class="grid gap-1.5 text-sm font-medium">¿Qué herramientas usan hoy?
         <textarea name="herramientas" rows="3" placeholder="Ej. Excel, correo, CONTPAQi, Google Drive…" class="rounded-lg border border-linea px-3 py-2.5 font-normal"></textarea>
       </label>
-      <button type="submit" class="btn-primario mt-2">Quiero mi llamada</button>
-      <p class="text-xs text-pizarra">Usamos tus datos solo para contactarte. Consulta nuestro aviso de privacidad.</p>
+      <button type="submit" class="btn-primario mt-2 disabled:opacity-60">Quiero mi llamada</button>
+      <p id="form-estado" class="hidden rounded-lg px-4 py-3 text-sm" role="status" aria-live="polite"></p>
+      <p class="text-xs text-pizarra">Usamos tus datos solo para contactarte. Consulta nuestro <a href="/aviso-de-privacidad" class="underline hover:text-tinta">aviso de privacidad</a>.</p>
     </form>
   </div>
 </section>
 
 <script>
   const form = document.getElementById('form-contacto') as HTMLFormElement | null;
-  form?.addEventListener('submit', (e) => {
+  const estado = document.getElementById('form-estado');
+
+  const mostrar = (msg: string, ok: boolean) => {
+    if (!estado) return;
+    estado.textContent = msg;
+    estado.className = `rounded-lg px-4 py-3 text-sm ${ok ? 'bg-turquesa/15 text-turquesa-texto' : 'bg-red-50 text-red-700'}`;
+  };
+
+  form?.addEventListener('submit', async (e) => {
     e.preventDefault();
+    if (!form.reportValidity()) return;
     const d = new FormData(form);
-    const cuerpo = [...d.entries()].map(([k, v]) => `${k}: ${v}`).join('\n');
-    const asunto = `Llamada de diagnóstico — ${d.get('empresa')}`;
-    window.location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
+    if (d.get('_gotcha')) return; // bot
+    d.delete('_gotcha');
+    const datos = Object.fromEntries(d.entries());
+    const endpoint = form.dataset.endpoint;
+
+    if (!endpoint) {
+      const cuerpo = Object.entries(datos).map(([k, v]) => `${k}: ${v}`).join('\n');
+      const asunto = `Llamada de diagnóstico — ${datos.empresa}`;
+      window.location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
+      return;
+    }
+
+    const boton = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    if (boton) boton.disabled = true;
+    try {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ ...datos, origen: 'gestalia.mx' }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      form.reset();
+      mostrar('¡Gracias! Te escribimos por WhatsApp en menos de un día hábil.', true);
+    } catch {
+      mostrar(`No pudimos enviar el formulario. Escríbenos a ${form.dataset.email} o por WhatsApp.`, false);
+    } finally {
+      if (boton) boton.disabled = false;
+    }
   });
 </script>

@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../config';
+
+// TODO: BORRADOR. Completar datos del responsable y hacer revisión legal antes de publicar (LFPDPPP).
+---
+
+<Base title="Aviso de privacidad · Gestalia" description="Aviso de privacidad de Gestalia.">
+  <Nav />
+  <main id="contenido" class="container-g max-w-3xl py-16 md:py-24">
+    <p class="etiqueta">Legal</p>
+    <h1 class="mt-4 text-[clamp(2rem,5vw,3rem)]">Aviso de privacidad</h1>
+    <p class="mt-6 rounded-lg bg-hielo px-4 py-3 text-sm text-pizarra">Borrador pendiente de revisión legal.</p>
+
+    <div class="mt-10 space-y-8 text-pizarra [&_h2]:text-2xl [&_h2]:text-tinta">
+      <section>
+        <h2>Responsable</h2>
+        <p class="mt-3">[Nombre o razón social], con domicilio en Guadalajara, Jalisco, México, es responsable del tratamiento de tus datos personales. Contacto: <a class="text-azul underline" href={`mailto:${site.email}`}>{site.email}</a>.</p>
+      </section>
+      <section>
+        <h2>Datos que recabamos</h2>
+        <p class="mt-3">Nombre, empresa, número de WhatsApp o teléfono, correo electrónico y la información que compartas sobre las herramientas y procesos de tu empresa.</p>
+      </section>
+      <section>
+        <h2>Finalidades</h2>
+        <p class="mt-3">Contactarte para agendar una llamada, preparar una propuesta de servicios, dar seguimiento comercial y, en su caso, prestar los servicios contratados.</p>
+      </section>
+      <section>
+        <h2>Derechos ARCO</h2>
+        <p class="mt-3">Puedes acceder, rectificar, cancelar u oponerte al tratamiento de tus datos, así como revocar tu consentimiento, escribiendo a {site.email}.</p>
+      </section>
+      <section>
+        <h2>Cambios a este aviso</h2>
+        <p class="mt-3">Cualquier cambio se publicará en esta página.</p>
+      </section>
+    </div>
+  </main>
+  <Footer />
+</Base>

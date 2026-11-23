@@ -1,0 +1,83 @@
+---
+const antes = ['Excel que viaja por correo', 'Carpetas en el escritorio de alguien', 'Sistema de escritorio aislado', 'Papel y capturas a mano'];
+const despues = ['Documentos en la nube, compartidos', 'Asistente de IA empresarial', 'Skills con las reglas de tu empresa', 'Cada persona automatiza lo suyo'];
+
+const plataformas = [
+  {
+    nombre: 'Claude Team',
+    de: 'Anthropic',
+    cuando: 'Nuestra recomendación por defecto',
+    texto: 'Skills, proyectos y análisis de documentos largos. Ideal para back office con mucho texto, Excel y PDFs.',
+    recomendada: true,
+  },
+  {
+    nombre: 'Gemini en Google Workspace',
+    de: 'Google',
+    cuando: 'Si tu empresa vive en Gmail, Drive y Sheets',
+    texto: 'La IA dentro de las herramientas que tu equipo ya abre todos los días.',
+  },
+  {
+    nombre: 'ChatGPT Business',
+    de: 'OpenAI',
+    cuando: 'Si ya trabajas con Microsoft u OpenAI',
+    texto: 'Espacio de trabajo empresarial con GPTs personalizados para cada área.',
+  },
+];
+---
+
+<section id="plataformas" class="scroll-mt-16 border-t border-linea py-20 md:py-28">
+  <div class="container-g">
+    <div class="reveal max-w-2xl">
+      <p class="etiqueta">04 — Tu stack</p>
+      <h2 class="mt-4 text-[clamp(2rem,4.5vw,3rem)]">Tu back office, <span class="enfasis">antes y después</span>.</h2>
+      <p class="mt-5 text-lg text-pizarra">
+        No se trata de comprar más software, sino de ordenar lo que ya tienes y sumar un asistente de IA que todo tu equipo sepa usar.
+      </p>
+    </div>
+
+    <div class="reveal mt-12 grid items-stretch gap-4 md:grid-cols-[1fr_auto_1fr]">
+      <div class="card bg-hielo/60 p-6">
+        <p class="etiqueta">Antes</p>
+        <ul class="mt-4 space-y-3">
+          {antes.map((a) => (
+            <li class="flex items-center gap-3 rounded-lg border border-dashed border-pizarra/30 bg-blanco px-4 py-3 text-pizarra">
+              <span class="h-2 w-2 shrink-0 rounded-full bg-pizarra/40" aria-hidden="true"></span>{a}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="flex items-center justify-center" aria-hidden="true">
+        <svg class="h-10 w-10 rotate-90 text-azul md:rotate-0" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="20" cy="20" r="19" class="text-linea" stroke="currentColor" stroke-width="1.5" />
+          <path d="M13 20h14M21 14l6 6-6 6" />
+        </svg>
+      </div>
+      <div class="card relative overflow-hidden p-6">
+        <p class="etiqueta !text-azul">Después</p>
+        <ul class="mt-4 space-y-3">
+          {despues.map((d) => (
+            <li class="flex items-center gap-3 rounded-lg border border-linea px-4 py-3 font-medium">
+              <svg class="shrink-0 text-turquesa" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" /></svg>{d}
+            </li>
+          ))}
+        </ul>
+        <div class="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-azul to-turquesa"></div>
+      </div>
+    </div>
+
+    <div class="reveal mt-20 max-w-2xl">
+      <h3 class="text-[clamp(1.5rem,3vw,2rem)]">Una plataforma para cada empresa. <span class="enfasis">No te casamos con una marca.</span></h3>
+      <p class="mt-3 text-pizarra">Las licencias las contratas directo con el proveedor; nosotros te ayudamos a elegir el plan que encaja con tu stack.</p>
+    </div>
+    <ul class="mt-8 grid gap-4 md:grid-cols-3">
+      {plataformas.map((p, i) => (
+        <li class:list={['reveal card flex flex-col p-6', p.recomendada && 'border-azul ring-1 ring-azul']} style={`transition-delay:${i * 60}ms`}>
+          <p class="font-mono text-xs text-pizarra">{p.de}</p>
+          <h4 class="mt-2 font-display text-xl font-bold">{p.nombre}</h4>
+          <p class:list={['mt-3 text-sm font-semibold', p.recomendada ? 'text-azul' : 'text-tinta']}>{p.cuando}</p>
+          <p class="mt-2 text-pizarra">{p.texto}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
