@@ -1,5 +1,5 @@
 ---
-import { fundador, site } from '../config';
+import { fundador, site, url } from '../config';
 
 const razones = [
   { titulo: 'Persona por persona', texto: 'No es un webinar: nos sentamos con cada quien a revisar su trabajo real.' },
@@ -29,7 +29,7 @@ const razones = [
 
     <aside class="reveal card h-fit p-6 sm:p-8" aria-label="Sobre el fundador">
       {fundador.foto
-        ? <img src={fundador.foto} alt={fundador.nombre} width="112" height="112" class="h-28 w-28 rounded-2xl object-cover" loading="lazy" />
+        ? <img src={url(fundador.foto)} alt={fundador.nombre} width="112" height="112" class="h-28 w-28 rounded-2xl object-cover" loading="lazy" />
         : <div class="grid h-24 w-24 place-items-center rounded-2xl bg-hielo font-display text-3xl font-bold text-azul" aria-hidden="true">{fundador.iniciales}</div>}
       <p class="etiqueta mt-6">{fundador.rol}</p>
       <h3 class="mt-1 text-2xl">{fundador.nombre}</h3>

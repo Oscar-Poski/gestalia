@@ -1,6 +1,6 @@
 ---
 import Logo from './Logo.astro';
-import { site, whatsappUrl } from '../config';
+import { site, whatsappUrl, url } from '../config';
 
 const links = [
   { href: '#programa', label: 'Programa' },
@@ -13,9 +13,9 @@ const links = [
 
 <header class="sticky top-0 z-40 border-b border-linea/70 bg-blanco/85 backdrop-blur">
   <nav class="container-g flex h-16 items-center justify-between gap-4" aria-label="Principal">
-    <a href="/" aria-label="Gestalia, inicio"><Logo /></a>
+    <a href={url()} aria-label="Gestalia, inicio"><Logo /></a>
     <ul class="hidden items-center gap-6 text-sm lg:gap-8 font-medium text-pizarra lg:flex">
-      {links.map((l) => <li><a href={`/${l.href}`} class="hover:text-tinta">{l.label}</a></li>)}
+      {links.map((l) => <li><a href={url(l.href)} class="hover:text-tinta">{l.label}</a></li>)}
     </ul>
     <div class="flex items-center gap-2">
       <a

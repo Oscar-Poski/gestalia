@@ -1,6 +1,6 @@
 ---
 import Logo from './Logo.astro';
-import { site, whatsappUrl } from '../config';
+import { site, whatsappUrl, url } from '../config';
 const anio = new Date().getFullYear();
 ---
 
@@ -14,7 +14,7 @@ const anio = new Date().getFullYear();
       <li><a href={whatsappUrl} target="_blank" rel="noopener" class="hover:text-blanco">WhatsApp</a></li>
       <li><a href={`mailto:${site.email}`} class="hover:text-blanco">{site.email}</a></li>
       <li><a href={site.linkedin} target="_blank" rel="noopener" class="hover:text-blanco">LinkedIn</a></li>
-      <li><a href="/aviso-de-privacidad" class="hover:text-blanco">Aviso de privacidad</a></li>
+      <li><a href={url("aviso-de-privacidad")} class="hover:text-blanco">Aviso de privacidad</a></li>
     </ul>
   </div>
   <div class="container-g mt-8 text-xs text-blanco/50">© {anio} Gestalia · Guadalajara, México</div>

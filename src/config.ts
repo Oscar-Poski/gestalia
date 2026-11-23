@@ -21,7 +21,7 @@ export const fundador = {
   nombre: 'Oscar Rivera',
   iniciales: 'OR',
   rol: 'Fundador',
-  foto: '/img/fundador.webp',
+  foto: 'img/fundador.webp',
   bio: [
     'Desarrollador de software y consultor de flujos de trabajo con IA en Guadalajara.',
     'Ha capacitado a equipos que nunca habían usado IA para que hoy automaticen su propio trabajo, y construye software con IA para su propio negocio de seguros.',
@@ -29,3 +29,6 @@ export const fundador = {
 };
 
 export const whatsappUrl = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappMessage)}`;
+
+// Antepone el base path (p. ej. /gestalia en GitHub Pages, / en gestalia.mx) a rutas internas.
+export const url = (ruta = '') => `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${ruta.replace(/^\//, '')}`;

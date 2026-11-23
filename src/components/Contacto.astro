@@ -1,5 +1,5 @@
 ---
-import { site, whatsappUrl } from '../config';
+import { site, whatsappUrl, url } from '../config';
 ---
 
 <section id="contacto" class="scroll-mt-16 bg-tinta py-20 text-blanco md:py-28">
@@ -40,7 +40,7 @@ import { site, whatsappUrl } from '../config';
       </label>
       <button type="submit" class="btn-primario mt-2 disabled:opacity-60">Quiero mi llamada</button>
       <p id="form-estado" class="hidden rounded-lg px-4 py-3 text-sm" role="status" aria-live="polite"></p>
-      <p class="text-xs text-pizarra">Usamos tus datos solo para contactarte. Consulta nuestro <a href="/aviso-de-privacidad" class="underline hover:text-tinta">aviso de privacidad</a>.</p>
+      <p class="text-xs text-pizarra">Usamos tus datos solo para contactarte. Consulta nuestro <a href={url("aviso-de-privacidad")} class="underline hover:text-tinta">aviso de privacidad</a>.</p>
     </form>
   </div>
 </section>
