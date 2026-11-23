@@ -1,0 +1,28 @@
+{
+  "name": "gestalia",
+  "version": "0.1.0",
+  "description": "Landing page de gestalia.mx",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Oscar-Poski/gestalia.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Oscar-Poski/gestalia/issues"
+  },
+  "homepage": "https://github.com/Oscar-Poski/gestalia#readme",
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "astro": "^5.18.2",
+    "tailwindcss": "^4.3.5"
+  },
+  "private": true,
+  "type": "module"
+}

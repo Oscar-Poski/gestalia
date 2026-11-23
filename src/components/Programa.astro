@@ -1,0 +1,80 @@
+---
+const fases = [
+  {
+    nombre: 'Diagnóstico de back office',
+    texto: 'Revisamos tus herramientas actuales y proponemos un stack moderno: suite en la nube + asistente de IA empresarial.',
+    entregable: 'Mapa de stack y plan de adopción',
+  },
+  {
+    nombre: 'Configuración',
+    texto: 'Elegimos la plataforma según tu stack (Claude Team, Gemini en Google Workspace o ChatGPT Business) y dejamos cuentas, permisos y proyectos listos.',
+    entregable: 'Espacio de trabajo listo y seguro',
+  },
+  {
+    nombre: 'Curso grupal',
+    texto: 'Fundamentos para quien nunca ha usado IA: cómo pedirle las cosas, trabajar con documentos, analizar datos y organizar proyectos.',
+    entregable: 'Equipo con un lenguaje común',
+  },
+  {
+    nombre: 'Sesiones 1:1 en persona',
+    texto: 'Nos sentamos con cada colaborador, revisamos su día y automatizamos sus tareas repetitivas con skills.',
+    entregable: 'Skills personales funcionando',
+    destacada: true,
+  },
+  {
+    nombre: 'Biblioteca de la empresa',
+    texto: 'Las mejores skills se vuelven estándar compartido para que todo el equipo trabaje igual de bien.',
+    entregable: 'Biblioteca de skills documentada',
+  },
+  {
+    nombre: 'Seguimiento',
+    texto: 'Medimos uso y horas ahorradas, resolvemos dudas y creamos nuevas skills conforme surgen.',
+    entregable: 'Reporte de adopción',
+  },
+];
+---
+
+<section id="programa" class="scroll-mt-16 border-y border-linea bg-hielo py-20 md:py-28">
+  <div class="container-g">
+    <div class="reveal grid gap-6 lg:grid-cols-2 lg:items-end">
+      <div>
+        <p class="etiqueta">02 — El programa</p>
+        <h2 class="mt-4 text-[clamp(2rem,4.5vw,3rem)]">De cero a <span class="enfasis">automatizar su propio trabajo</span>.</h2>
+      </div>
+      <p class="text-lg text-pizarra">
+        Un programa de adopción de IA en seis fases. No es un webinar: trabajamos sobre las tareas reales de
+        tu equipo, persona por persona.
+      </p>
+    </div>
+
+    <ol class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {fases.map((f, i) => (
+        <li
+          class:list={[
+            'reveal card flex flex-col p-6',
+            f.destacada && 'border-azul bg-tinta text-blanco',
+          ]}
+          style={`transition-delay:${(i % 3) * 60}ms`}
+        >
+          <div class="flex items-center justify-between">
+            <span class:list={['font-mono text-sm', f.destacada ? 'text-azul-claro' : 'text-azul']}>0{i + 1}</span>
+            {f.destacada && <span class="rounded-full bg-azul px-3 py-1 font-mono text-[11px] uppercase tracking-wider">El corazón del programa</span>}
+          </div>
+          <h3 class="mt-4 text-xl">{f.nombre}</h3>
+          <p class:list={['mt-2 flex-1', f.destacada ? 'text-blanco/75' : 'text-pizarra']}>{f.texto}</p>
+          <p class:list={['mt-5 border-t pt-4 text-sm font-medium', f.destacada ? 'border-blanco/15' : 'border-linea']}>
+            <span class:list={['etiqueta mr-1', f.destacada && '!text-blanco/60']}>Entregable</span> {f.entregable}
+          </p>
+        </li>
+      ))}
+    </ol>
+
+    <div class="reveal card mt-10 flex flex-col gap-3 p-6 sm:flex-row sm:items-center sm:gap-6">
+      <span class="shrink-0 rounded-full bg-hielo px-3 py-1 font-mono text-xs text-azul">¿Qué es una skill?</span>
+      <p class="text-pizarra">
+        Una receta que le enseñas <strong class="text-tinta">una sola vez</strong> a la IA para que haga esa tarea igual, cada vez:
+        con tu formato, tus reglas y tus documentos.
+      </p>
+    </div>
+  </div>
+</section>

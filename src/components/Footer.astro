@@ -1,0 +1,20 @@
+---
+import Logo from './Logo.astro';
+import { site, whatsappUrl } from '../config';
+const anio = new Date().getFullYear();
+---
+
+<footer class="border-t border-blanco/10 bg-tinta py-10 text-blanco/70">
+  <div class="container-g flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+    <div>
+      <Logo oscuro class="text-blanco" />
+      <p class="mt-2 text-sm">Gestalt + IA: el todo es más que la suma de sus partes.</p>
+    </div>
+    <ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+      <li><a href={whatsappUrl} target="_blank" rel="noopener" class="hover:text-blanco">WhatsApp</a></li>
+      <li><a href={`mailto:${site.email}`} class="hover:text-blanco">{site.email}</a></li>
+      <li><a href="#" class="hover:text-blanco">Aviso de privacidad</a></li>
+    </ul>
+  </div>
+  <div class="container-g mt-8 text-xs text-blanco/50">© {anio} Gestalia · Guadalajara, México</div>
+</footer>

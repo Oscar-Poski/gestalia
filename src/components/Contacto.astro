@@ -1,0 +1,54 @@
+---
+import { site, whatsappUrl } from '../config';
+---
+
+<section id="contacto" class="scroll-mt-16 bg-tinta py-20 text-blanco md:py-28">
+  <div class="container-g grid gap-12 lg:grid-cols-2 lg:items-center">
+    <div class="reveal">
+      <p class="etiqueta !text-blanco/60">03 — Hablemos</p>
+      <h2 class="mt-4 text-[clamp(2rem,4.5vw,3rem)]">
+        En 30 minutos te decimos qué tareas de tu equipo puede resolver la IA <span class="text-azul-claro">esta misma semana</span>.
+      </h2>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a href={whatsappUrl} target="_blank" rel="noopener" class="btn-primario">Escríbenos por WhatsApp</a>
+        <a href={`mailto:${site.email}`} class="btn-secundario !border-blanco/20 !bg-transparent !text-blanco hover:!border-blanco">{site.email}</a>
+      </div>
+    </div>
+
+    <!-- v0.1: el formulario abre el correo del usuario. v0.2: conectar a backend/CRM. -->
+    <form id="form-contacto" class="reveal grid gap-4 rounded-[var(--radius-card)] bg-blanco p-6 text-tinta sm:p-8" data-email={site.email}>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <label class="grid gap-1.5 text-sm font-medium">Nombre
+          <input name="nombre" required autocomplete="name" class="rounded-lg border border-linea px-3 py-2.5 font-normal" />
+        </label>
+        <label class="grid gap-1.5 text-sm font-medium">Empresa
+          <input name="empresa" required autocomplete="organization" class="rounded-lg border border-linea px-3 py-2.5 font-normal" />
+        </label>
+        <label class="grid gap-1.5 text-sm font-medium">WhatsApp
+          <input name="whatsapp" type="tel" required autocomplete="tel" class="rounded-lg border border-linea px-3 py-2.5 font-normal" />
+        </label>
+        <label class="grid gap-1.5 text-sm font-medium">Personas en el equipo
+          <select name="personas" class="rounded-lg border border-linea bg-blanco px-3 py-2.5 font-normal">
+            <option>1–5</option><option>6–20</option><option>21–50</option><option>51–100</option><option>Más de 100</option>
+          </select>
+        </label>
+      </div>
+      <label class="grid gap-1.5 text-sm font-medium">¿Qué herramientas usan hoy?
+        <textarea name="herramientas" rows="3" placeholder="Ej. Excel, correo, CONTPAQi, Google Drive…" class="rounded-lg border border-linea px-3 py-2.5 font-normal"></textarea>
+      </label>
+      <button type="submit" class="btn-primario mt-2">Quiero mi llamada</button>
+      <p class="text-xs text-pizarra">Usamos tus datos solo para contactarte. Consulta nuestro aviso de privacidad.</p>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('form-contacto') as HTMLFormElement | null;
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const d = new FormData(form);
+    const cuerpo = [...d.entries()].map(([k, v]) => `${k}: ${v}`).join('\n');
+    const asunto = `Llamada de diagnóstico — ${d.get('empresa')}`;
+    window.location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
+  });
+</script>

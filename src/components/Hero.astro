@@ -1,0 +1,91 @@
+---
+import { site, whatsappUrl } from '../config';
+
+// "El día de una persona": cada tarea repetitiva se vuelve una skill.
+const tareas = [
+  { hora: '09:00', tarea: 'Capturar facturas del correo', antes: '45 min', despues: '3 min' },
+  { hora: '11:30', tarea: 'Armar el reporte semanal', antes: '2 h', despues: '10 min' },
+  { hora: '13:00', tarea: 'Responder cotizaciones', antes: '1 h', despues: '15 min' },
+  { hora: '16:30', tarea: 'Conciliar estado de cuenta', antes: '1.5 h', despues: '12 min' },
+];
+---
+
+<section class="puntos relative overflow-hidden border-b border-linea">
+  <div class="container-g grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[1.1fr_1fr]">
+    <div>
+      <p class="etiqueta">Adopción de IA para PyMEs · México</p>
+      <h1 class="mt-5 text-[clamp(2.5rem,6vw,4.5rem)]">
+        Tu equipo ya sabe hacer su trabajo. Le enseñamos a hacerlo <span class="enfasis">con IA</span>.
+      </h1>
+      <p class="mt-6 max-w-xl text-lg text-pizarra">
+        Modernizamos el back office de tu empresa y capacitamos a cada persona, en sesiones uno a uno,
+        para que automatice sus propias tareas con Claude, Gemini o ChatGPT.
+      </p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a href={site.bookingUrl} class="btn-primario">Agenda una llamada de 30 min</a>
+        <a href={whatsappUrl} target="_blank" rel="noopener" class="btn-secundario">Escríbenos por WhatsApp</a>
+      </div>
+      <p class="mt-10 font-mono text-xs uppercase tracking-[0.14em] text-pizarra">
+        Trabajamos con <span class="text-tinta">Claude</span> · <span class="text-tinta">Gemini</span> · <span class="text-tinta">ChatGPT</span>
+      </p>
+    </div>
+
+    <div class="card relative p-5 shadow-[0_24px_60px_-30px_rgba(10,15,28,0.25)] sm:p-6" aria-label="Ejemplo: el día de una persona con IA">
+      <div class="flex items-center justify-between">
+        <p class="etiqueta">El día de Ana · Administración</p>
+        <span class="rounded-full bg-hielo px-3 py-1 font-mono text-xs text-pizarra">Sesión 1:1</span>
+      </div>
+      <ol class="mt-5 space-y-3">
+        {tareas.map((t, i) => (
+          <li class="tarea flex items-center gap-3 rounded-xl border border-linea p-3 sm:gap-4" style={`--i:${i}`}>
+            <span class="font-mono text-xs text-pizarra">{t.hora}</span>
+            <span class="min-w-0 flex-1 text-sm font-medium leading-snug sm:text-base">{t.tarea}</span>
+            <span class="estado relative grid h-7 w-[7.75rem] shrink-0 place-items-end font-mono text-xs whitespace-nowrap">
+              <span class="antes col-start-1 row-start-1 rounded-full bg-hielo px-2.5 py-1 text-pizarra">{t.antes}</span>
+              <span class="despues col-start-1 row-start-1 inline-flex items-center gap-1 rounded-full bg-azul px-2.5 py-1 text-blanco">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5" /></svg>
+                skill · {t.despues}
+              </span>
+            </span>
+          </li>
+        ))}
+      </ol>
+      <div class="mt-5 flex items-center justify-between border-t border-linea pt-4">
+        <span class="text-sm text-pizarra">Tiempo liberado al día</span>
+        <span class="font-display text-2xl font-bold">≈ 4.5 h</span>
+      </div>
+      <div class="pointer-events-none absolute -bottom-px left-6 right-6 h-[2px] rounded-full bg-gradient-to-r from-azul to-turquesa"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .antes {
+    animation: salir 0.35s ease forwards;
+    animation-delay: calc(0.9s + var(--i) * 0.55s);
+  }
+  .despues {
+    opacity: 0;
+    transform: scale(0.9);
+    animation: entrar 0.35s ease forwards;
+    animation-delay: calc(1s + var(--i) * 0.55s);
+  }
+  .tarea {
+    animation: resaltar 0.9s ease;
+    animation-delay: calc(0.75s + var(--i) * 0.55s);
+  }
+  @keyframes salir {
+    to { opacity: 0; transform: scale(0.9); }
+  }
+  @keyframes entrar {
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes resaltar {
+    40% { border-color: var(--color-azul); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .antes, .despues, .tarea { animation: none; }
+    .antes { opacity: 0; }
+    .despues { opacity: 1; transform: none; }
+  }
+</style>
